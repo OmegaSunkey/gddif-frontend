@@ -1,0 +1,33 @@
+@font-face {
+	font-family: "Pusab";
+	src: url("/static/PUSAB.woff");
+}
+
+body {
+	font-family: Pusab;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+	font-size: larger;
+    margin: 0;
+    background-image: linear-gradient(blue, navy);
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+h1, h2, p {
+    margin: 8px;
+    color: white;
+	text-align: center;
+}
+#diff {
+	display: flex;
+	justify-content: center;
+}
+#backbtn {
+	position: relative;
+	top: 16px;
+	left: 16px;
+}
+#graph {
+	max-width: 400px;
+	margin: auto;
+	  }
