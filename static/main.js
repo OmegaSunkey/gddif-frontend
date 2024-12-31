@@ -1,9 +1,6 @@
 //jshint esversion: 11
-
-let lvlid = document.querySelector('#LvlId');
 let h = new URL(document.URL).searchParams;
-lvlid.innerHTML = h.get("id") || "null";
-LvlCrt.innerHTML = "null";
+LvlId.innerHTML = h.get("id") || "null";
 
 let chartsubmit;
 
@@ -21,22 +18,23 @@ document.querySelectorAll(".ib").forEach(b => {
   })
 })
 
-let GraphData;
-let LevelDifficulty;
-let LevelName;
-let LevelCreator;
-let isDemon;
-let isAuto;
+SubmitButton.onclick = (e) => {
+  e.preventDefault();
+  fetch(`https://gddif.gdspikes.workers.dev/setDiff?id=${h.get("id")}&p1=${input1.value}&p2=${input2.value}&p3=${input3.value}&p4=${input4.value}&p5=${input5.value}&p6=${input6.value}&p7=${input7.value}&p8=${input8.value}&p9=${input9.value}&p10=${input10.value}`);
+  backgroundSubmit.style.display = "none";
+  SubmitSheet.style.display = "none";
+};
 
+let GraphData;
 
 fetch(`https://gddif.gdspikes.workers.dev/browser?id=${h.get("id")}`).then(x => x.json()).then(json => {
     LvlName.innerHTML = json.name;
-	LvlCrt.innerHTML = json.creator || "Player";
+    LvlCrt.innerHTML = json.creator || "Player";
 		
 	setDiffFace(json.difficulty, json.demon, json.auto);
 		
 	GraphData = () => {
-		if(json.diff.length == 1) {
+		if(json.diff[0].results.length == 1) {
 			delete json.diff[0].results[0].id;
 			delete json.diff[0].results[0].lock;
 			return Object.values(json.diff[0].results[0]);
@@ -53,9 +51,7 @@ fetch(`https://gddif.gdspikes.workers.dev/browser?id=${h.get("id")}`).then(x => 
 	};
 		
 	createChart(GraphData(), "#gdcanvas");
-		
-	isDemon = json.demon || 0;
-	isAuto = json.auto || 0;
+	console.log(json);
 });
 	  
 Chart.defaults.color = "#fff";

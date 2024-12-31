@@ -6,8 +6,8 @@
   </head>
   <body>
 	<img src="/static/back.png" width="48" id="backbtn" onclick="window.location = 'index.html'">
-	<h1 id="LvlName"></h1>
-	<h2 id="LvlCrt"></h2>
+	<h1 id="LvlName">null</h1>
+	<h2 id="LvlCrt">Player</h2>
 	<div class="center"><img src="/static/na.png" width="180" height="180" id="DifficultyFace"></div>
 	<p id="LvlId"></p>
 	<div id="graph">
@@ -54,7 +54,7 @@
 	    <input type="button" class="inputsubmit ib" onclick="input10.stepDown()" value="-">
 	    <input type="number" id="input10" class="inputsubmit" max="10" min="0" value="0">
 	    <input type="button" class="inputsubmit ib" onclick="input10.stepUp()" value="+"><br>
-	    <input type="submit" value="Send!">
+	    <input type="submit" id="SubmitButton" value="Send!">
 	    <input type="button" value="Cancel" onclick="backgroundSubmit.style.display = 'none'; SubmitSheet.style.display = 'none'">
 	  </form>
 	</div></div>
