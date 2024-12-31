@@ -8,12 +8,57 @@
 	<img src="/static/back.png" width="48" id="backbtn" onclick="window.location = 'index.html'">
 	<h1 id="LvlName"></h1>
 	<h2 id="LvlCrt"></h2>
-	<div id="diff"><img src="/static/na.png" width="180" height="180" id="DifficultyFace"></div>
+	<div class="center"><img src="/static/na.png" width="180" height="180" id="DifficultyFace"></div>
 	<p id="LvlId"></p>
 	<div id="graph">
-		<canvas id="gdcanvas"></canvas>
+		<canvas id="gdcanvas">
+		  <p>A canvas goes in here.</p>
+		</canvas>
 	</div>
+	<div class="center"><button id="SubmitStart">Submit your difficulty spikes!</button></div>
+	<div id="backgroundSubmit"><div id="SubmitSheet">
+	  <h1>Submit difficulty</h1>
+	  <div id="canvasdiv">
+	    <canvas id="canvassub">
+	      <p>Cannot see? Cannot submit... or well you can but you can't see.</p>
+	    </canvas>
+	  </div>
+	  <form>
+	    <input type="button" class="inputsubmit ib" onclick="input1.stepDown()" value="-">
+	    <input type="number" id="input1" class="inputsubmit" max="10" min="0" value="0">
+	    <input type="button" class="inputsubmit ib" onclick="input1.stepUp()" value="+"><br>
+	    <input type="button" class="inputsubmit ib" onclick="input2.stepDown()" value="-">
+	    <input type="number" id="input2" class="inputsubmit" max="10" min="0" value="0">
+	    <input type="button" class="inputsubmit ib" onclick="input2.stepUp()" value="+"><br>
+	    <input type="button" class="inputsubmit ib" onclick="input3.stepDown()" value="-">
+	    <input type="number" id="input3" class="inputsubmit" max="10" min="0" value="0">
+	    <input type="button" class="inputsubmit ib" onclick="input3.stepUp()" value="+"><br>
+	    <input type="button" class="inputsubmit ib" onclick="input4.stepDown()" value="-">
+	    <input type="number" id="input4" class="inputsubmit" max="10" min="0" value="0">
+	    <input type="button" class="inputsubmit ib" onclick="input4.stepUp()" value="+"><br>
+	    <input type="button" class="inputsubmit ib" onclick="input5.stepDown()" value="-">
+	    <input type="number" id="input5" class="inputsubmit" max="10" min="0" value="0">
+	    <input type="button" class="inputsubmit ib" onclick="input5.stepUp()" value="+"><br>
+	    <input type="button" class="inputsubmit ib" onclick="input6.stepDown()" value="-">
+	    <input type="number" id="input6" class="inputsubmit" max="10" min="0" value="0">
+	    <input type="button" class="inputsubmit ib" onclick="input6.stepUp()" value="+"><br>
+	    <input type="button" class="inputsubmit ib" onclick="input7.stepDown()" value="-">
+	    <input type="number" id="input7" class="inputsubmit" max="10" min="0" value="0">
+	    <input type="button" class="inputsubmit ib" onclick="input7.stepUp()" value="+"><br>
+	    <input type="button" class="inputsubmit ib" onclick="input8.stepDown()" value="-">
+	    <input type="number" id="input8" class="inputsubmit" max="10" min="0" value="0">
+	    <input type="button" class="inputsubmit ib" onclick="input8.stepUp()" value="+"><br>
+	    <input type="button" class="inputsubmit ib" onclick="input9.stepDown()" value="-">
+	    <input type="number" id="input9" class="inputsubmit" max="10" min="0" value="0">
+	    <input type="button" class="inputsubmit ib" onclick="input9.stepUp()" value="+"><br>
+	    <input type="button" class="inputsubmit ib" onclick="input10.stepDown()" value="-">
+	    <input type="number" id="input10" class="inputsubmit" max="10" min="0" value="0">
+	    <input type="button" class="inputsubmit ib" onclick="input10.stepUp()" value="+"><br>
+	    <input type="submit" value="Send!">
+	    <input type="button" value="Cancel" onclick="backgroundSubmit.style.display = 'none'; SubmitSheet.style.display = 'none'">
+	  </form>
+	</div></div>
 	<script src="/static/chart.umd.min.js"></script>
-    <script src="/static/main.js"></script>
+  <script src="/static/main.js"></script>
   </body>
 </html>

@@ -18,7 +18,7 @@ h1, h2, p {
     color: white;
 	text-align: center;
 }
-#diff {
+.center {
 	display: flex;
 	justify-content: center;
 }
@@ -30,4 +30,34 @@ h1, h2, p {
 #graph {
 	max-width: 400px;
 	margin: auto;
-	  }
+	height: 240px;
+}
+#backgroundSubmit {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.3);
+}
+#SubmitSheet {
+  display: none;
+  width: 75%;  
+  border: 1px solid;
+  background-color: rgba(0,0,0,0.4);
+  padding: 12px;
+}
+#canvasdiv {
+  height: 240px;
+}
+#SubmitStart {
+  -webkit-text-stroke-color: initial;
+  -webkit-text-stroke-width: initial;
+  margin: 0 auto;
+}
+
+.inputsubmit {
+  width: 50px;
+}

@@ -2,16 +2,33 @@
 
 let lvlid = document.querySelector('#LvlId');
 let h = new URL(document.URL).searchParams;
-lvlid.innerHTML = h.get("id");
-	  
+lvlid.innerHTML = h.get("id") || "null";
+LvlCrt.innerHTML = "null";
+
+let chartsubmit;
+
+SubmitStart.onclick = () => {
+  SubmitSheet.style.display = SubmitSheet.style.display == "none" ? "block" : "none";
+  backgroundSubmit.style.display = backgroundSubmit.style.display == "none" ? "flex" : "none";
+  console.log(backgroundSubmit.style.display)
+  chartsubmit = createChart([input1.value, input2.value, input3.value, input4.value, input5.value, input6.value, input7.value, input8.value, input9.value, input10.value], "#canvassub");
+  console.log(SubmitSheet.style.display)
+}
+document.querySelectorAll(".ib").forEach(b => {
+  b.addEventListener("click", () => {
+    chartsubmit.data.datasets[0].data = [input1.value, input2.value, input3.value, input4.value, input5.value, input6.value, input7.value, input8.value, input9.value, input10.value];
+    chartsubmit.update();
+  })
+})
+
 let GraphData;
 let LevelDifficulty;
 let LevelName;
 let LevelCreator;
 let isDemon;
 let isAuto;
-	  
-      
+
+
 fetch(`https://gddif.gdspikes.workers.dev/browser?id=${h.get("id")}`).then(x => x.json()).then(json => {
     LvlName.innerHTML = json.name;
 	LvlCrt.innerHTML = json.creator || "Player";
@@ -35,7 +52,7 @@ fetch(`https://gddif.gdspikes.workers.dev/browser?id=${h.get("id")}`).then(x => 
 		}
 	};
 		
-	createChart(GraphData());
+	createChart(GraphData(), "#gdcanvas");
 		
 	isDemon = json.demon || 0;
 	isAuto = json.auto || 0;
@@ -87,8 +104,8 @@ function setDiffFace(diff, demon, auto) {
 	}
 }
 	  
-function createChart(diffdata) {
-	new Chart(document.querySelector("#gdcanvas"), {
+function createChart(diffdata, qsel) {
+	let chart = new Chart(document.querySelector(qsel), {
 		type: "line",
 		data: {
 			labels: ["0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "90-100"],
@@ -98,6 +115,7 @@ function createChart(diffdata) {
 			}]
 		},
 		options: {
+		  maintainAspectRatio: false,
 			scales: {
 				y: {
 					beginAtZero: true,
@@ -106,4 +124,5 @@ function createChart(diffdata) {
 			}
 		}
 	});
+	return chart;
 }
