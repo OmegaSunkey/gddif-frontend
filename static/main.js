@@ -5,18 +5,16 @@ LvlId.innerHTML = h.get("id") || "null";
 let chartsubmit;
 
 SubmitStart.onclick = () => {
-  SubmitSheet.style.display = SubmitSheet.style.display == "none" ? "block" : "none";
-  backgroundSubmit.style.display = backgroundSubmit.style.display == "none" ? "flex" : "none";
-  console.log(backgroundSubmit.style.display)
+  SubmitSheet.style.display = SubmitSheet.style.display == "none" || SubmitSheet.style.display == "" ? "block" : "none";
+  backgroundSubmit.style.display = backgroundSubmit.style.display == "none" || backgroundSubmit.style.display == "" ? "flex" : "none";
   chartsubmit = createChart([input1.value, input2.value, input3.value, input4.value, input5.value, input6.value, input7.value, input8.value, input9.value, input10.value], "#canvassub");
-  console.log(SubmitSheet.style.display)
-}
+};
 document.querySelectorAll(".ib").forEach(b => {
   b.addEventListener("click", () => {
     chartsubmit.data.datasets[0].data = [input1.value, input2.value, input3.value, input4.value, input5.value, input6.value, input7.value, input8.value, input9.value, input10.value];
     chartsubmit.update();
-  })
-})
+  });
+});
 
 SubmitButton.onclick = (e) => {
   e.preventDefault();
@@ -27,32 +25,33 @@ SubmitButton.onclick = (e) => {
 
 let GraphData;
 
-fetch(`https://gddif.gdspikes.workers.dev/browser?id=${h.get("id")}`).then(x => x.json()).then(json => {
-    LvlName.innerHTML = json.name;
-    LvlCrt.innerHTML = json.creator || "Player";
+if (h.get("id") !== null) {
+	fetch(`https://gddif.gdspikes.workers.dev/browser?id=${h.get("id")}`).then(x => x.json()).then(json => {
+		LvlName.innerHTML = json.name;
+		LvlCrt.innerHTML = json.creator || "Player";
+		setDiffFace(json.difficulty, json.demon, json.auto);
 		
-	setDiffFace(json.difficulty, json.demon, json.auto);
+		GraphData = () => {
+			if(json.diff[0].results.length == 1) {
+				delete json.diff[0].results[0].id;
+				delete json.diff[0].results[0].lock;
+				return Object.values(json.diff[0].results[0]);
+			} else {
+				let merged = [0,0,0,0,0,0,0,0,0,0];
+				json.diff[1].results.forEach((r) => {
+					for(let i = 1; i<11; i++) {
+						merged[i-1] += Object.values(r)[i];
+					}
+				});
+				merged = merged.map(m => m/json.diff[1].results.length);
+				return merged;
+			}
+		};
 		
-	GraphData = () => {
-		if(json.diff[0].results.length == 1) {
-			delete json.diff[0].results[0].id;
-			delete json.diff[0].results[0].lock;
-			return Object.values(json.diff[0].results[0]);
-		} else {
-			let merged = [0,0,0,0,0,0,0,0,0,0];
-			json.diff[1].results.forEach((r) => {
-				for(let i = 1; i<11; i++) {
-					merged[i-1] += Object.values(r)[i];
-				}
-			});
-			merged = merged.map(m => m/json.diff[1].results.length)
-			return merged;
-		}
-	};
-		
-	createChart(GraphData(), "#gdcanvas");
-	console.log(json);
-});
+		createChart(GraphData(), "#gdcanvas");
+		console.log(json);
+	});
+}
 	  
 Chart.defaults.color = "#fff";
 	  

@@ -3,7 +3,15 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+	  @font-face {
+	    font-family: "Pusab";
+	    src: url("/static/PUSAB.woff");
+	  }
       body {
+		font-family: "Pusab";
+		-webkit-text-stroke-width: 1px;
+		-webkit-text-stroke-color: black;
+		font-size: larger;
         margin: 0;
         background-image: linear-gradient(blue, navy);
         background-repeat: no-repeat;
@@ -14,13 +22,23 @@
         color: white;
 		text-align: center;
       }
+	  #searchbox {
+		background-color: #00000080;
+		border-radius: 10px;
+		height: 32px;
+		width: 70%;
+		border-color: #00000000;
+		color: white;
+		-webkit-text-stroke-color: initial;
+		-webkit-text-stroke-width: initial;
+	  }
     </style>
   </head>
   <body>
     <h1>Welcome to the Geometry Dash Difficulty Info main site!</h1>
     <p>This site aims to be a database for understanding which parts of any given level require more attention for practice. By giving users the power to submit their opinion in form of points, I hope that the information is useful to anyone.</p>
     <form action="search.html">
-      <input type="number" name="id" id="searchbox" placeholder="91556">
+      <input type="text" inputmode="numeric" pattern="\d*" name="id" id="searchbox" placeholder="91556">
       <input type="submit">
     </form>
   </body>
