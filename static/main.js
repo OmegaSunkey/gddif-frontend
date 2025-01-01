@@ -3,6 +3,7 @@ let h = new URL(document.URL).searchParams;
 LvlId.innerHTML = h.get("id") || "null";
 
 let chartsubmit;
+let mainchart;
 
 SubmitStart.onclick = () => {
   SubmitSheet.style.display = SubmitSheet.style.display == "none" || SubmitSheet.style.display == "" ? "block" : "none";
@@ -21,9 +22,16 @@ SubmitButton.onclick = (e) => {
   fetch(`https://gddif.gdspikes.workers.dev/setDiff?id=${h.get("id")}&p1=${input1.value}&p2=${input2.value}&p3=${input3.value}&p4=${input4.value}&p5=${input5.value}&p6=${input6.value}&p7=${input7.value}&p8=${input8.value}&p9=${input9.value}&p10=${input10.value}`);
   backgroundSubmit.style.display = "none";
   SubmitSheet.style.display = "none";
+  for(let i = 0; i<mainchart.data.datasets[0].data.length; i++) {
+    mainchart.data.datasets[0].data[i] += document.querySelector(`#input${i+1}`).valueAsNumber;
+    mainchart.data.datasets[0].data[i] = mainchart.data.datasets[0].data[i] / ResultQuantity;
+  }
+  ResultQuantity++;
+  mainchart.update();
 };
 
 let GraphData;
+let ResultQuantity;
 
 if (h.get("id") !== null) {
 	fetch(`https://gddif.gdspikes.workers.dev/browser?id=${h.get("id")}`).then(x => x.json()).then(json => {
@@ -40,15 +48,16 @@ if (h.get("id") !== null) {
 				let merged = [0,0,0,0,0,0,0,0,0,0];
 				json.diff[1].results.forEach((r) => {
 					for(let i = 1; i<11; i++) {
-						merged[i-1] += Object.values(r)[i];
+						merged[i-1] += Object.values(r)[i] || 0;
 					}
 				});
 				merged = merged.map(m => m/json.diff[1].results.length);
+				ResultQuantity = json.diff[1].results.length + 1;
 				return merged;
 			}
 		};
 		
-		createChart(GraphData(), "#gdcanvas");
+		mainchart = createChart(GraphData(), "#gdcanvas");
 		console.log(json);
 	});
 }

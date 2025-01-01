@@ -16,6 +16,9 @@
         background-image: linear-gradient(blue, navy);
         background-repeat: no-repeat;
         height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
       h1, p, form {
         margin: 8px;
@@ -26,11 +29,21 @@
 		background-color: #00000080;
 		border-radius: 10px;
 		height: 32px;
-		width: 70%;
+		width: 60%;
 		border-color: #00000000;
 		color: white;
 		-webkit-text-stroke-color: initial;
 		-webkit-text-stroke-width: initial;
+		font-family: 'Pusab';
+	  }
+	  input[type="submit"] {
+	    border: 6px solid transparent;
+	    border-radius: 5px;
+	    border-image: url('/static/button_green.png') 16% round;
+	    background-color: #7ade2d;
+	    color: white;
+	    font-family: 'Pusab';
+	    font-size: large;
 	  }
     </style>
   </head>
