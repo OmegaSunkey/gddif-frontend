@@ -127,7 +127,6 @@ input[type="number"] {
 		grid-template-columns: 1fr 1fr;
 		text-align: center;
 	}
-	
 	#SubmitSheet {
 		width: 75%;
 	}
@@ -136,5 +135,17 @@ input[type="number"] {
 	}
 	#canvasdiv {
 		height: 200px;
+	}
+	#SubmitStart {
+		width: 60%;
+	}
+	h1 {
+		margin: 0;
+	}
+}
+
+@media only screen and (width < 400px) {
+	#backbtn {
+		width: 32px;
 	}
 }
