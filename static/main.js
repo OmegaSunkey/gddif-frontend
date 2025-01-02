@@ -34,6 +34,9 @@ SubmitButton.onclick = (e) => {
   }
   ResultQuantity++;
   mainchart.update();
+  backgroundSubmit.style.display = 'none';
+  SubmitSheet.style.display = 'none';
+  chartsubmit.destroy();
 };
 
 let GraphData;
