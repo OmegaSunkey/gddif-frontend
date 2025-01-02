@@ -19,7 +19,11 @@ document.querySelectorAll(".ib").forEach(b => {
 
 SubmitButton.onclick = (e) => {
   e.preventDefault();
-  fetch(`https://gddif.gdspikes.workers.dev/setDiff?id=${h.get("id")}&p1=${input1.value}&p2=${input2.value}&p3=${input3.value}&p4=${input4.value}&p5=${input5.value}&p6=${input6.value}&p7=${input7.value}&p8=${input8.value}&p9=${input9.value}&p10=${input10.value}`);
+  fetch(`https://gddif.gdspikes.workers.dev/setDiff?id=${h.get("id")}&p1=${input1.value}&p2=${input2.value}&p3=${input3.value}&p4=${input4.value}&p5=${input5.value}&p6=${input6.value}&p7=${input7.value}&p8=${input8.value}&p9=${input9.value}&p10=${input10.value}`).then(x => {
+	  if(x.status != 400) {
+		  
+	  }
+  });
   backgroundSubmit.style.display = "none";
   SubmitSheet.style.display = "none";
   for(let i = 0; i<mainchart.data.datasets[0].data.length; i++) {
@@ -33,7 +37,7 @@ SubmitButton.onclick = (e) => {
 let GraphData;
 let ResultQuantity;
 
-if (h.get("id") !== null) {
+if (!isNaN(Number(h.get("id")))) {
 	fetch(`https://gddif.gdspikes.workers.dev/browser?id=${h.get("id")}`).then(x => x.json()).then(json => {
 		LvlName.innerHTML = json.name;
 		LvlCrt.innerHTML = json.creator || "Player";
@@ -60,6 +64,8 @@ if (h.get("id") !== null) {
 		mainchart = createChart(GraphData(), "#gdcanvas");
 		console.log(json);
 	});
+} else {
+	document.write("Do not.");
 }
 	  
 Chart.defaults.color = "#fff";

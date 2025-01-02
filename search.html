@@ -29,70 +29,71 @@
 					<div id="part1">
 						<label for="input1">0-10</label>
 						<input type="button" class="inputsubmit ib" onclick="input1.stepDown()" value="-">
-						<input type="number" id="input1" class="inputsubmit" max="10" min="0" value="0">
+						<input type="number" id="input1" class="inputsubmit" max="10" min="0" value="0" required>
 						<input type="button" class="inputsubmit ib" onclick="input1.stepUp()" value="+"><br>
 					</div>
 					<div id="part2">
 						<label for="input2">10-20</label>
 						<input type="button" class="inputsubmit ib" onclick="input2.stepDown()" value="-">
-						<input type="number" id="input2" class="inputsubmit" max="10" min="0" value="0">
+						<input type="number" id="input2" class="inputsubmit" max="10" min="0" value="0" required required>
 						<input type="button" class="inputsubmit ib" onclick="input2.stepUp()" value="+"><br>
 					</div>
 					<div id="part3">
 						<label for="input3">20-30</label>
 						<input type="button" class="inputsubmit ib" onclick="input3.stepDown()" value="-">
-						<input type="number" id="input3" class="inputsubmit" max="10" min="0" value="0">
+						<input type="number" id="input3" class="inputsubmit" max="10" min="0" value="0" required>
 						<input type="button" class="inputsubmit ib" onclick="input3.stepUp()" value="+"><br>
 					</div>
 					<div id="part4">
 						<label for="input4">30-40</label>
 						<input type="button" class="inputsubmit ib" onclick="input4.stepDown()" value="-">
-						<input type="number" id="input4" class="inputsubmit" max="10" min="0" value="0">
+						<input type="number" id="input4" class="inputsubmit" max="10" min="0" value="0" required>
 						<input type="button" class="inputsubmit ib" onclick="input4.stepUp()" value="+"><br>
 					</div>
 					<div id="part5">
 						<label for="input5">40-50</label>
 						<input type="button" class="inputsubmit ib" onclick="input5.stepDown()" value="-">
-						<input type="number" id="input5" class="inputsubmit" max="10" min="0" value="0">
+						<input type="number" id="input5" class="inputsubmit" max="10" min="0" value="0" required>
 						<input type="button" class="inputsubmit ib" onclick="input5.stepUp()" value="+"><br>
 					</div>
 					<div id="part6">
 						<label for="input6">50-60</label>
 						<input type="button" class="inputsubmit ib" onclick="input6.stepDown()" value="-">
-						<input type="number" id="input6" class="inputsubmit" max="10" min="0" value="0">
+						<input type="number" id="input6" class="inputsubmit" max="10" min="0" value="0" required>
 						<input type="button" class="inputsubmit ib" onclick="input6.stepUp()" value="+"><br>
 					</div>
 					<div id="part7">
 						<label for="input7">60-70</label>
 						<input type="button" class="inputsubmit ib" onclick="input7.stepDown()" value="-">
-						<input type="number" id="input7" class="inputsubmit" max="10" min="0" value="0">
+						<input type="number" id="input7" class="inputsubmit" max="10" min="0" value="0" required>
 						<input type="button" class="inputsubmit ib" onclick="input7.stepUp()" value="+"><br>
 					</div>
 					<div id="part8">
 						<label for="input8">70-80</label>
 						<input type="button" class="inputsubmit ib" onclick="input8.stepDown()" value="-">
-						<input type="number" id="input8" class="inputsubmit" max="10" min="0" value="0">
+						<input type="number" id="input8" class="inputsubmit" max="10" min="0" value="0" required>
 						<input type="button" class="inputsubmit ib" onclick="input8.stepUp()" value="+"><br>
 					</div>
 					<div id="part9">
 						<label for="input9">80-90</label>
 						<input type="button" class="inputsubmit ib" onclick="input9.stepDown()" value="-">
-						<input type="number" id="input9" class="inputsubmit" max="10" min="0" value="0">
+						<input type="number" id="input9" class="inputsubmit" max="10" min="0" value="0" required>
 						<input type="button" class="inputsubmit ib" onclick="input9.stepUp()" value="+"><br>
 					</div>
 					<div id="part10">
 						<label for="input10">90-100</label>
 						<input type="button" class="inputsubmit ib" onclick="input10.stepDown()" value="-">
-						<input type="number" id="input10" class="inputsubmit" max="10" min="0" value="0">
+						<input type="number" id="input10" class="inputsubmit" max="10" min="0" value="0" required>
 						<input type="button" class="inputsubmit ib" onclick="input10.stepUp()" value="+"><br>
 					</div>
+					<div id="bottombuttons" style="text-align: center; padding-top: 10px;">
+						<input type="submit" id="SubmitButton" class="interactive" value="Send!">
+						<input type="button" value="Cancel" class="interactive" onclick="backgroundSubmit.style.display = 'none'; SubmitSheet.style.display = 'none'; chartsubmit.destroy();">
+					</div>
 				</form>
-				<div style="text-align: center;">
-					<input type="submit" id="SubmitButton" class="interactive" value="Send!">
-					<input type="button" value="Cancel" class="interactive" onclick="backgroundSubmit.style.display = 'none'; SubmitSheet.style.display = 'none'">
-				</div>
 			</div>
 		</div>
+		<p id="response"></p>
 		<script src="/static/chart.umd.min.js"></script>
 		<script src="/static/main.js"></script>
 	</body>
