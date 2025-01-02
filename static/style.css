@@ -41,6 +41,7 @@ h1, h2, p {
 	right: 0;
 	width: 100vw;
 	height: 100vh;
+	z-index: 3;
 	justify-content: center;
 	align-items: center;
 	background-color: rgba(0,0,0,0.3);
