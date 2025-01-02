@@ -93,7 +93,18 @@
 				</form>
 			</div>
 		</div>
-		<p id="response"></p>
+		<div id="backgroundInfo">
+			<div id="Information">
+				<h1 id="Legend">Legend:</h1>
+				<ul>
+					<li>0-4: less difficult than announced.</li>
+					<li>5: same difficulty.</li>
+					<li>6-10: more difficult than announced.</li>
+				</ul>
+				<div class="center"><img src="/static/ok.png" height="40" id="OK" onclick="backgroundInfo.style.display = 'none'; Information.style.display = 'none'"></div>
+			</div>
+		</div>
+		<img id="InfoIcon" src="/static/info.png" width=32 onclick="backgroundInfo.style.display = 'flex'; Information.style.display = 'block'">
 		<script src="/static/chart.umd.min.js"></script>
 		<script src="/static/main.js"></script>
 	</body>
