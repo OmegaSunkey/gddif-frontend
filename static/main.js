@@ -42,6 +42,7 @@ if (!isNaN(Number(h.get("id")))) {
 		LvlName.innerHTML = json.name;
 		LvlCrt.innerHTML = json.creator || "Player";
 		setDiffFace(json.difficulty, json.demon, json.auto);
+		document.title = `${json.name} by ${LvlCrt.innerHTML} - ${h.get("id")}`;
 		
 		GraphData = () => {
 			if(json.diff[0].results.length == 1) {
